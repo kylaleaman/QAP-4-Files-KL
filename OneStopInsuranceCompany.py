@@ -5,7 +5,8 @@
 # import libraries
 import datetime
 import FormatValues as FV
-
+import time
+from tqdm import tqdm
 
 
 # define constants - Open the defaults file and read the values into variables
@@ -309,7 +310,15 @@ while True:
     f.write(f"{payPlan}, ")
     f.write(f"{totPremium}\n")
     f.close()
+
+    print()
+    print()
+    print("Saving data - please wait")
+    # Processing bar
+    for _ in tqdm(range(20), desc="Processing", unit="ticks", ncols=100, bar_format="{desc}  {bar}"):
+        time.sleep(.1)
     print("Insurance Policy data successfully saved!")
+    time.sleep(1)
     print()
 
     # Update the policy number
